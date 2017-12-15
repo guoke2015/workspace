@@ -48,4 +48,16 @@ public class Constant {
      * 网络不可用时缓存最大时间（1天）
      */
     public static final int NETWORK_NOT_AVAILABLE_CACHE_MAXAGE=1*24*60*60;
+    /**
+     * 连接超时时间（10s）
+     */
+    public static final int CONNECT_TIME_OUT=10;
+    /**
+     * 读取数据超时时间（10s）
+     */
+    public static final int READ_TIME_OUT=10;
+    /**
+     * 写数据超时时间（10s）
+     */
+    public static final int WRITE_TIME_OUT=10;
 }
