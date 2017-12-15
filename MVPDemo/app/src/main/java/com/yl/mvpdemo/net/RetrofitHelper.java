@@ -40,12 +40,14 @@ public class RetrofitHelper {
             loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
             client.addInterceptor(loggingInterceptor);
         }
-        client.connectTimeout(1000, TimeUnit.SECONDS)
-                .readTimeout(1000, TimeUnit.SECONDS)
-                .writeTimeout(1000, TimeUnit.SECONDS)
+        HttpCacheInterceptor httpCacheInterceptor = new HttpCacheInterceptor();
+        client.connectTimeout(Constant.CONNECT_TIME_OUT, TimeUnit.SECONDS)
+                .readTimeout(Constant.READ_TIME_OUT, TimeUnit.SECONDS)
+                .writeTimeout(Constant.WRITE_TIME_OUT, TimeUnit.SECONDS)
                 .retryOnConnectionFailure(true)
                 .cache(cache)
-                .addNetworkInterceptor(new HttpCacheInterceptor());
+                .addInterceptor(httpCacheInterceptor)
+                .addNetworkInterceptor(httpCacheInterceptor);
         // 初始化Retrofit
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Constant.SERVER_URL)

@@ -1,10 +1,12 @@
 package com.yl.mvpdemo.net;
 
+import com.yl.mvpdemo.Constant;
 import com.yl.mvpdemo.MyApplication;
 import com.yl.mvpdemo.utils.NetworkUtils;
 
 import java.io.IOException;
 
+import okhttp3.CacheControl;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -22,29 +24,25 @@ public class HttpCacheInterceptor implements Interceptor {
     @Override
     public Response intercept(Chain chain) throws IOException {
         Request request = chain.request();
-        /*if (NetworkUtils.isAvailableByPing(MyApplication.getInstance())) {
-            request = request.newBuilder()
-                    .cacheControl(new CacheControl.Builder().maxStale(Constant.NETWORK_IS_AVAILABLE_CACHE_MAXAGE, TimeUnit.SECONDS).build()).build();
-        } else {
-            request = request.newBuilder()
-                    .cacheControl(new CacheControl.Builder().maxStale(Constant.NETWORK_NOT_AVAILABLE_CACHE_MAXAGE, TimeUnit.SECONDS).build()).build();
-        }*/
-        Response response = chain.proceed(request);
-
         if (NetworkUtils.isAvailableByPing(MyApplication.getInstance())) {
-            int maxAge = 60;//缓存失效时间，单位为秒
+            Response response = chain.proceed(request);
             return response.newBuilder()
-                    .removeHeader("Pragma")//清除头信息，因为服务器如果不支持，会返回一些干扰信息，不清除下面无法生效
-                    .header("Cache-Control", "public ,max-age=" + maxAge)
+                    .removeHeader("Pragma")
+                    .removeHeader("Cache-Control")
+                    .header("Cache-Control", "public, max-age=" + Constant.NETWORK_IS_AVAILABLE_CACHE_MAXAGE)
                     .build();
         } else {
-            //这段代码设置无效
-            int maxStale = 60 * 60 * 24 * 28; // 无网络时，设置超时为4周
+            request = request.newBuilder()
+                    .cacheControl(CacheControl.FORCE_NETWORK)
+                    .build();
+
+            Response response = chain.proceed(request);
+            //下面注释的部分设置也没有效果，因为在上面已经设置了
             return response.newBuilder()
-                    .header("Cache-Control", "public, only-if-cached, max-stale=" + maxStale)
-                    .removeHeader("Pragma")
+//                        .removeHeader("Pragma")
+//                        .removeHeader("Cache-Control")
+//                        .header("Cache-Control", "public, only-if-cached, max-stale="+Constant.NETWORK_NOT_AVAILABLE_CACHE_MAXAGE)
                     .build();
         }
-//        return response;
     }
 }
