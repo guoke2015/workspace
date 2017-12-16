@@ -7,6 +7,7 @@ import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 
 import io.reactivex.observers.DefaultObserver;
+import retrofit2.HttpException;
 
 /**
  * <pre>
@@ -38,7 +39,9 @@ public abstract class BaseObserver<T> extends DefaultObserver<BaseResult<T>> {
             resultFail(Constant.CONNECT_EXCEPTION);
         } else if (e instanceof UnknownHostException) {
             resultFail(Constant.UNKNOWN_HOST_EXCEPTION);
-        } else {
+        } else if (e instanceof HttpException){
+            resultFail(Constant.CONNECT_EXCEPTION);
+        } else{
             resultFail(e.getMessage());
         }
 

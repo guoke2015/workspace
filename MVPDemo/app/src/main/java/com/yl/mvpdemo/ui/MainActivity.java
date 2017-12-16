@@ -31,6 +31,8 @@ public class MainActivity extends BaseActivity implements JokeView, View.OnClick
     private ProgressDialog progressDialog;
     private ExpressPresenter expressPresenter;
 
+    private long time = 1418816972;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,7 +63,7 @@ public class MainActivity extends BaseActivity implements JokeView, View.OnClick
 
     @Override
     public void hideProgressDialog() {
-        progressDialog.hide();
+        progressDialog.dismiss();
     }
 
     @Override
@@ -73,7 +75,8 @@ public class MainActivity extends BaseActivity implements JokeView, View.OnClick
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_get_post_info:
-                expressPresenter.getJokeInfo(1,1, Constant.DESC,"1418816972");
+                time+=1000;
+                expressPresenter.getJokeInfo(1,1, Constant.DESC,time+"");
                 break;
             default:
 

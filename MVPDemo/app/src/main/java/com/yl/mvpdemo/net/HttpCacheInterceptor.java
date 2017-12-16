@@ -5,7 +5,9 @@ import com.yl.mvpdemo.MyApplication;
 import com.yl.mvpdemo.utils.NetworkUtils;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
+import okhttp3.Cache;
 import okhttp3.CacheControl;
 import okhttp3.Interceptor;
 import okhttp3.Request;
@@ -33,7 +35,7 @@ public class HttpCacheInterceptor implements Interceptor {
                     .build();
         } else {
             request = request.newBuilder()
-                    .cacheControl(CacheControl.FORCE_NETWORK)
+                    .cacheControl(CacheControl.FORCE_CACHE)
                     .build();
 
             Response response = chain.proceed(request);

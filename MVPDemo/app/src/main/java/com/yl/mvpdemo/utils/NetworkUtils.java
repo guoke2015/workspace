@@ -6,7 +6,12 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiManager;
 import android.telephony.TelephonyManager;
+import android.util.Log;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.lang.reflect.Method;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
@@ -96,12 +101,12 @@ public class NetworkUtils {
         return ret;
     }
 
-    /**
-     * 判断移动数据是否打开
-     *
-     * @param context 上下文
-     * @return {@code true}: 是<br>{@code false}: 否
-     */
+        /**
+         * 判断移动数据是否打开
+         *
+         * @param context 上下文
+         * @return {@code true}: 是<br>{@code false}: 否
+         */
     public static boolean getDataEnabled(Context context) {
         try {
             TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
