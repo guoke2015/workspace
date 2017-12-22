@@ -3,6 +3,8 @@ package com.yl.mvpdemo.net;
 import com.yl.mvpdemo.bean.BaseResult;
 import com.yl.mvpdemo.bean.Joke;
 
+import java.util.List;
+
 import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
@@ -24,5 +26,5 @@ public interface ApiService {
      * @return Joke
      */
     @GET("list.from")
-    Observable<BaseResult<Joke>> getJokeInfo(@Query("key") String key, @Query("page") int page, @Query("pagesize") int pagesize, @Query("sort")String sort, @Query("time") String time);
+    Observable<BaseResult<List<Joke>>> getJokeInfo(@Query("key") String key, @Query("page") int page, @Query("pagesize") int pagesize, @Query("sort")String sort, @Query("time") String time);
 }

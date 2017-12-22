@@ -13,6 +13,8 @@ import com.yl.mvpdemo.bean.Joke;
 import com.yl.mvpdemo.presenter.ExpressPresenter;
 import com.yl.mvpdemo.view.JokeView;
 
+import java.util.List;
+
 /**
  * 主页
  * Created by yangle on 2017/6/26.
@@ -47,23 +49,27 @@ public class MainActivity extends BaseActivity implements JokeView, View.OnClick
 
     private void initView() {
         tvPostInfo = (TextView) findViewById(R.id.tv_post_info);
-        btnGetPostInfo= (Button) findViewById(R.id.btn_get_post_info);
+        btnGetPostInfo = (Button) findViewById(R.id.btn_get_post_info);
         btnGetPostInfo.setOnClickListener(this);
     }
 
     @Override
-    public void updateView(Joke joke) {
-        tvPostInfo.setText(joke.getData().get(0).getContent());
+    public void updateView(List<Joke> joke) {
+        tvPostInfo.setText(joke.get(0).getContent());
     }
 
     @Override
     public void showProgressDialog() {
-        progressDialog.show();
+        if ((progressDialog != null) && (!progressDialog.isShowing())) {
+            progressDialog.show();
+        }
     }
 
     @Override
     public void hideProgressDialog() {
-        progressDialog.dismiss();
+        if (progressDialog != null && progressDialog.isShowing()) {
+            progressDialog.dismiss();
+        }
     }
 
     @Override
@@ -75,8 +81,8 @@ public class MainActivity extends BaseActivity implements JokeView, View.OnClick
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_get_post_info:
-                time+=1000;
-                expressPresenter.getJokeInfo(1,1, Constant.DESC,time+"");
+                time += 1000;
+                expressPresenter.getJokeInfo(1, 1, Constant.DESC, time + "");
                 break;
             default:
 

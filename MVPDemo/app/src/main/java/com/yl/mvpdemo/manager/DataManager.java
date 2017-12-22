@@ -6,6 +6,8 @@ import com.yl.mvpdemo.bean.BaseResult;
 import com.yl.mvpdemo.bean.Joke;
 import com.yl.mvpdemo.net.ApiService;
 
+import java.util.List;
+
 import io.reactivex.Observable;
 
 /**
@@ -34,7 +36,7 @@ public class DataManager {
      * @param time 时间戳（10位），如：1418816972
      * @return
      */
-    public Observable<BaseResult<Joke>> getJokeInfo(int page,int pagesize,String sort,String time) {
+    public Observable<BaseResult<List<Joke>>> getJokeInfo(int page, int pagesize, String sort, String time) {
         return apiService.getJokeInfo(Constant.APPKEY, page,pagesize,sort,time);
     }
 }

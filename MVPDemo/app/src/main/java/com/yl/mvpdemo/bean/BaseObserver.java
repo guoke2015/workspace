@@ -1,5 +1,6 @@
 package com.yl.mvpdemo.bean;
 
+
 import com.yl.mvpdemo.Constant;
 
 import java.net.ConnectException;

@@ -8,6 +8,8 @@ import com.yl.mvpdemo.bean.Joke;
 import com.yl.mvpdemo.manager.DataManager;
 import com.yl.mvpdemo.view.JokeView;
 
+import java.util.List;
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Action;
@@ -58,11 +60,11 @@ public class ExpressPresenter extends BasePresenter {
                     }
                 })
                 // onDestroy取消订阅
-                .compose(getProvider().<BaseResult<Joke>>bindUntilEvent(ActivityEvent.DESTROY))
+                .compose(getProvider().<BaseResult<List<Joke>>>bindUntilEvent(ActivityEvent.DESTROY))
                 // 订阅
-                .subscribe(new BaseObserver<Joke>() {
+                .subscribe(new BaseObserver<List<Joke>>() {
                     @Override
-                    public void resultSuccess(Joke data) {
+                    public void resultSuccess(List<Joke> data) {
                         jokeView.updateView(data);
                     }
 
