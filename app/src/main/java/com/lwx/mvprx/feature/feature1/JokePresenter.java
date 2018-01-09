@@ -2,11 +2,8 @@ package com.lwx.mvprx.feature.feature1;
 
 import com.lwx.mvprx.base.BaseObserver;
 import com.lwx.mvprx.base.BasePresenter;
-import com.lwx.mvprx.base.BaseResult;
 import com.lwx.mvprx.data.DataManager;
 import com.lwx.mvprx.data.bean.Joke;
-import com.trello.rxlifecycle2.LifecycleProvider;
-import com.trello.rxlifecycle2.android.ActivityEvent;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -27,8 +24,8 @@ import io.reactivex.schedulers.Schedulers;
 public class JokePresenter<V extends JokeView> extends BasePresenter<V> {
     private DataManager mDataManager;
 
-    public JokePresenter(LifecycleProvider<ActivityEvent> provider) {
-        super(provider);
+    public JokePresenter() {
+        super();
         mDataManager = DataManager.getInstance();
     }
 
@@ -49,7 +46,7 @@ public class JokePresenter<V extends JokeView> extends BasePresenter<V> {
                             mViewRef.get().hideLoading();
                         }
                     })
-                    .compose(getProvider().<BaseResult<Joke>>bindUntilEvent(ActivityEvent.DESTROY))
+                    .compose(mViewRef.get().bindLifecycle())
                     .subscribe(new BaseObserver<Joke>() {
                         @Override
                         public void resultSuccess(Joke joke) {

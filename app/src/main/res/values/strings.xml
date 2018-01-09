@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">MVPRx</string>
     <string name="toast_message">Toast message</string>
+
+    <string name="loading">正在加载...</string>
+    <string name="error">出错了</string>
+    <string name="retry">轻触屏幕重试</string>
+    <string name="empty">啥也没有</string>
 </resources>

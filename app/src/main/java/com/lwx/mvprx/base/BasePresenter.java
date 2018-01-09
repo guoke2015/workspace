@@ -1,8 +1,5 @@
 package com.lwx.mvprx.base;
 
-import com.trello.rxlifecycle2.LifecycleProvider;
-import com.trello.rxlifecycle2.android.ActivityEvent;
-
 import java.lang.ref.WeakReference;
 
 /**
@@ -32,15 +29,5 @@ public class BasePresenter<V> {
      */
     public void detachView(){
         mViewRef.clear();
-    }
-
-    private LifecycleProvider<ActivityEvent> provider;
-
-    public BasePresenter(LifecycleProvider<ActivityEvent> provider) {
-        this.provider = provider;
-    }
-
-    public LifecycleProvider<ActivityEvent> getProvider() {
-        return provider;
     }
 }

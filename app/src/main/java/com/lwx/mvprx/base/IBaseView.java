@@ -1,5 +1,7 @@
 package com.lwx.mvprx.base;
 
+import com.trello.rxlifecycle2.LifecycleTransformer;
+
 /**
  * <pre>
  *     author : liwx
@@ -20,4 +22,10 @@ public interface IBaseView {
      * 隐藏加载框
      */
     void hideLoading();
+
+    /**
+     * 管理view生命周期与rxjava的订阅关系
+     * @return
+     */
+    LifecycleTransformer bindLifecycle();
 }

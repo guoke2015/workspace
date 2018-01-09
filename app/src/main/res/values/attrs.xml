@@ -8,4 +8,10 @@
         <attr name="indicatorName" format="string"/>
         <attr name="indicatorColor" format="color"/>
     </declare-styleable>
+
+    <declare-styleable name="StateLayout">
+        <attr name="errorDrawable" format="reference" />
+        <attr name="emptyDrawable" format="reference" />
+        <attr name="progressView" format="reference" />
+    </declare-styleable>
 </resources>
