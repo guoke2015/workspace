@@ -35,7 +35,7 @@ public class ConvertUtils {
         throw new UnsupportedOperationException("u can't instantiate me...");
     }
 
-    static final char hexDigits[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
+    static final char HEX_DIGITS[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
 
     /**
      * byteArr转hexString
@@ -55,8 +55,8 @@ public class ConvertUtils {
         }
         char[] ret = new char[len << 1];
         for (int i = 0, j = 0; i < len; i++) {
-            ret[j++] = hexDigits[bytes[i] >>> 4 & 0x0f];
-            ret[j++] = hexDigits[bytes[i] & 0x0f];
+            ret[j++] = HEX_DIGITS[bytes[i] >>> 4 & 0x0f];
+            ret[j++] = HEX_DIGITS[bytes[i] & 0x0f];
         }
         return new String(ret);
     }
@@ -109,7 +109,9 @@ public class ConvertUtils {
      * @return 字节数组
      */
     public static byte[] chars2Bytes(char[] chars) {
-        if (chars == null || chars.length <= 0) return null;
+        if (chars == null || chars.length <= 0) {
+            return null;
+        }
         int len = chars.length;
         byte[] bytes = new byte[len];
         for (int i = 0; i < len; i++) {

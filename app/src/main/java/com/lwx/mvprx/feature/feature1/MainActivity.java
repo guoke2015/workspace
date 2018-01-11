@@ -17,7 +17,6 @@ public class MainActivity extends BaseActivity<JokeView, JokePresenter<JokeView>
     private Button jokeInfoBt;
 
     private MyLayout myLayout;
-//    private MyDailog myDailog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +60,6 @@ public class MainActivity extends BaseActivity<JokeView, JokePresenter<JokeView>
 
     @Override
     public void showLoading() {
-//        myDailog.show();
         myLayout.showLoading();
     }
 

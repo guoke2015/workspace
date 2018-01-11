@@ -383,16 +383,6 @@ public class AVLoadingIndicatorView extends View {
         }
     }
 
-	/*@TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    @Override
-	public void drawableHotspotChanged(float x, float y) {
-		super.drawableHotspotChanged(x, y);
-
-		if (mIndicator != null) {
-			mIndicator.setHotspot(x, y);
-		}
-	}*/
-
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
