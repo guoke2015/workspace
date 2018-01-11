@@ -2,6 +2,7 @@ package com.lwx.mvprx.custom;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.support.constraint.ConstraintLayout;
 import android.support.constraint.ConstraintSet;
 import android.util.AttributeSet;
@@ -159,7 +160,11 @@ public class MyConstraintLayout extends ConstraintLayout implements MyLayout {
                 setContentVisibility(false, idsOfViewsNotToHide);
                 inflateEmptyView();
 
-                emptyStateImageView.setImageResource(R.drawable.ic_empty_page);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
+                    emptyStateImageView.setImageResource(R.drawable.ic_empty_page);
+                } else {
+                    emptyStateImageView.setImageResource(R.drawable.ic_empty);
+                }
                 emptyState.setOnClickListener(clickListener);
                 break;
             case ERROR:

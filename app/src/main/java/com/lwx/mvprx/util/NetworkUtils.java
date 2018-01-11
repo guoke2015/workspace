@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiManager;
+import android.os.Build;
 import android.telephony.TelephonyManager;
 
 import java.lang.reflect.Method;
@@ -45,7 +46,7 @@ public class NetworkUtils {
      * @param context 上下文
      */
     public static void openWirelessSettings(Context context) {
-        if (android.os.Build.VERSION.SDK_INT > 10) {
+        if (android.os.Build.VERSION.SDK_INT > Build.VERSION_CODES.GINGERBREAD_MR1) {
             context.startActivity(new Intent(android.provider.Settings.ACTION_WIRELESS_SETTINGS));
         } else {
             context.startActivity(new Intent(android.provider.Settings.ACTION_SETTINGS));
@@ -274,9 +275,9 @@ public class NetworkUtils {
                     default:
 
                         String subtypeName = info.getSubtypeName();
-                        if (subtypeName.equalsIgnoreCase("TD-SCDMA")
-                                || subtypeName.equalsIgnoreCase("WCDMA")
-                                || subtypeName.equalsIgnoreCase("CDMA2000")) {
+                        if ("TD-SCDMA".equalsIgnoreCase(subtypeName)
+                                || "WCDMA".equalsIgnoreCase(subtypeName)
+                                || "CDMA2000".equalsIgnoreCase(subtypeName)) {
                             netType = NetworkType.NETWORK_3G;
                         } else {
                             netType = NetworkType.NETWORK_UNKNOWN;
