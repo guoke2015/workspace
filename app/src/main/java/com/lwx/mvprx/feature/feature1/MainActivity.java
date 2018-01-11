@@ -96,6 +96,9 @@ public class MainActivity extends BaseActivity<JokeView, JokePresenter<JokeView>
         myLayout.showError(err, retryOnClickListener);
     }
 
+    /**
+     * 定义自定义点击事件
+     */
     private View.OnClickListener retryOnClickListener=new View.OnClickListener() {
         @Override
         public void onClick(View view) {
