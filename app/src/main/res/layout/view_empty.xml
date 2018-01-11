@@ -3,26 +3,26 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/empty_content"
+    android:id="@+id/layout_empty"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/selectableItemBackground"
     android:clickable="true">
 
     <ImageView
-        android:id="@+id/emptyImageView"
+        android:id="@+id/image_icon"
         android:layout_width="@dimen/drawable_size"
-        android:layout_height="0dp"
+        android:layout_height="@dimen/drawable_size"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="154dp"
-        app:layout_constraintBottom_toTopOf="@+id/emptyTextView"
+        app:layout_constraintBottom_toTopOf="@+id/text_title"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@drawable/ic_empty_page"/>
 
     <TextView
-        android:id="@+id/emptyTextView"
+        android:id="@+id/text_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="207dp"
@@ -34,7 +34,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emptyImageView"/>
+        app:layout_constraintTop_toBottomOf="@+id/image_icon"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -45,6 +45,6 @@
         android:textSize="10sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emptyTextView"/>
+        app:layout_constraintTop_toBottomOf="@+id/text_title"/>
 
 </android.support.constraint.ConstraintLayout>

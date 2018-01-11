@@ -47,6 +47,7 @@ public class JokePresenter<V extends JokeView> extends BasePresenter<V> {
                         }
                     })
                     .compose(mViewRef.get().bindLifecycle())
+                    .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new BaseObserver<Joke>() {
                         @Override
                         public void resultSuccess(Joke joke) {

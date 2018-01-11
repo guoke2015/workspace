@@ -6,6 +6,7 @@ import com.lwx.mvprx.util.NetworkUtils;
 
 import java.io.IOException;
 
+import okhttp3.CacheControl;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -32,9 +33,9 @@ public class HttpCacheInterceptor implements Interceptor {
                     .header("Cache-Control", "public, max-age=" + Constant.NETWORK_IS_AVAILABLE_CACHE_MAXAGE)
                     .build();
         } else {
-//            request = request.newBuilder()
-//                    .cacheControl(CacheControl.FORCE_CACHE)
-//                    .build();
+            request = request.newBuilder()
+                    .cacheControl(CacheControl.FORCE_CACHE)
+                    .build();
 
             Response response = chain.proceed(request);
             //下面注释的部分设置也没有效果，因为在上面已经设置了

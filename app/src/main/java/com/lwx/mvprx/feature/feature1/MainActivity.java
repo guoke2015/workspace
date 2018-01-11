@@ -1,15 +1,13 @@
 package com.lwx.mvprx.feature.feature1;
 
 import android.os.Bundle;
-import android.support.constraint.ConstraintLayout;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.lwx.mvprx.R;
 import com.lwx.mvprx.base.BaseActivity;
-import com.lwx.mvprx.custom.FadeViewAnimProvider;
-import com.lwx.mvprx.custom.StateLayout;
+import com.lwx.mvprx.custom.MyLayout;
 import com.lwx.mvprx.data.bean.Joke;
 import com.lwx.mvprx.util.ToastUtils;
 import com.trello.rxlifecycle2.LifecycleTransformer;
@@ -18,8 +16,7 @@ public class MainActivity extends BaseActivity<JokeView, JokePresenter<JokeView>
     private TextView jokeInfoTv;
     private Button jokeInfoBt;
 
-    private StateLayout stateLayout;
-    private ConstraintLayout conlayout;
+    private MyLayout myLayout;
 //    private MyDailog myDailog;
 
     @Override
@@ -36,13 +33,11 @@ public class MainActivity extends BaseActivity<JokeView, JokePresenter<JokeView>
      * 初始化控件
      */
     private void init() {
-        stateLayout = findViewById(R.id.stateLayout);
-        conlayout = findViewById(R.id.conlayout);
+        myLayout = findViewById(R.id.my_layout);
         jokeInfoTv = findViewById(R.id.joke_info);
         jokeInfoBt = findViewById(R.id.get_jokes);
 
-        stateLayout.setViewSwitchAnimProvider(new FadeViewAnimProvider());
-//        stateLayout.addView(conlayout);
+        myLayout.showContent();
 //        myDailog = new MyDailog(this);
         ToastUtils.init(true);
     }
@@ -67,12 +62,12 @@ public class MainActivity extends BaseActivity<JokeView, JokePresenter<JokeView>
     @Override
     public void showLoading() {
 //        myDailog.show();
-        stateLayout.showProgressView();
+        myLayout.showLoading();
     }
 
     @Override
     public void hideLoading() {
-//        myDailog.dismiss();
+
     }
 
     @Override
@@ -82,21 +77,29 @@ public class MainActivity extends BaseActivity<JokeView, JokePresenter<JokeView>
 
     @Override
     public void showSuccess(Joke joke) {
-        ToastUtils.success(MainActivity.this, "进入showSuccess方法");
-        /*StringBuilder sb = new StringBuilder();
-        for (Joke.DataBean dataBean : joke.getData()) {
-            sb.append(dataBean.getContent());
-            sb.append("\n");
-        }*/
-        ToastUtils.success(MainActivity.this,"数据加载完，开始执行showContentView方法");
-        stateLayout.showContentView();
-        ToastUtils.success(MainActivity.this, "执行完showContentView方法");
-//        jokeInfoTv.setText(joke.getData().get(0).getContent());
+        if (joke.getData().size()>0){
+            StringBuilder sb = new StringBuilder();
+            for (Joke.DataBean dataBean : joke.getData()) {
+                sb.append(dataBean.getContent());
+                sb.append("\n");
+            }
+            jokeInfoTv.setText(sb);
+            myLayout.showContent();
+        }else {
+            myLayout.showEmpty(retryOnClickListener);
+        }
+
     }
 
     @Override
     public void showFail(final String err) {
-        stateLayout.showErrorView(err);
-//        ToastUtils.error(this, err);
+        myLayout.showError(err, retryOnClickListener);
     }
+
+    private View.OnClickListener retryOnClickListener=new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            mPresenter.getJokes(1, 5, "desc", String.valueOf(System.currentTimeMillis() / 1000));
+        }
+    };
 }

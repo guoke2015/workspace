@@ -1,37 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.lwx.mvprx.custom.StateLayout
+<com.lwx.mvprx.custom.MyConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/stateLayout"
+    android:id="@+id/my_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.lwx.mvprx.feature.feature1.MainActivity">
 
-    <android.support.constraint.ConstraintLayout
+    <Button
+        android:id="@+id/get_jokes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="获取笑话大全"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/joke_info"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/conlayout">
-        <Button
-            android:id="@+id/get_jokes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="获取笑话大全"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            />
-
-        <TextView
-            android:id="@+id/joke_info"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
-    </android.support.constraint.ConstraintLayout>
-</com.lwx.mvprx.custom.StateLayout>
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+</com.lwx.mvprx.custom.MyConstraintLayout>
