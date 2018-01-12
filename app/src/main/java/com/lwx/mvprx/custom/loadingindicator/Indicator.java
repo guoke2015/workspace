@@ -1,4 +1,4 @@
-package com.lwx.mvprx.custom;
+package com.lwx.mvprx.custom.loadingindicator;
 
 import android.animation.ValueAnimator;
 import android.graphics.Canvas;

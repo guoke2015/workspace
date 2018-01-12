@@ -9,7 +9,7 @@ import retrofit2.http.Query;
 
 /**
  * <pre>
- *     author : liwx
+ *     @author : liwx
  *     e-mail : xxx@xx
  *     time   : 2017/12/20
  *     desc   : 请求参数接口

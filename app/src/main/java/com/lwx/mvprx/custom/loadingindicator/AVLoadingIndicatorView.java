@@ -1,4 +1,4 @@
-package com.lwx.mvprx.custom;
+package com.lwx.mvprx.custom.loadingindicator;
 
 import android.content.Context;
 import android.content.res.TypedArray;

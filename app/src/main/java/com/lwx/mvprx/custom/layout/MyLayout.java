@@ -1,4 +1,4 @@
-package com.lwx.mvprx.custom;
+package com.lwx.mvprx.custom.layout;
 
 import android.graphics.drawable.Drawable;
 import android.view.View;

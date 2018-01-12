@@ -5,9 +5,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.lwx.mvprx.Constant;
 import com.lwx.mvprx.R;
 import com.lwx.mvprx.base.BaseActivity;
-import com.lwx.mvprx.custom.MyLayout;
+import com.lwx.mvprx.custom.layout.MyLayout;
 import com.lwx.mvprx.data.bean.Joke;
 import com.lwx.mvprx.util.ToastUtils;
 import com.trello.rxlifecycle2.LifecycleTransformer;
@@ -56,7 +57,7 @@ public class MainActivity extends BaseActivity<JokeView, JokePresenter<JokeView>
         jokeInfoBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mPresenter.getJokes(1, 5, "desc", String.valueOf(System.currentTimeMillis() / 1000));
+                mPresenter.getJokes(1, 5, Constant.DESC, String.valueOf(System.currentTimeMillis() / 1000));
             }
         });
     }
@@ -108,7 +109,7 @@ public class MainActivity extends BaseActivity<JokeView, JokePresenter<JokeView>
     private View.OnClickListener retryOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            mPresenter.getJokes(1, 5, "desc", String.valueOf(System.currentTimeMillis() / 1000));
+            mPresenter.getJokes(1, 5, Constant.DESC, String.valueOf(System.currentTimeMillis() / 1000));
         }
     };
 }

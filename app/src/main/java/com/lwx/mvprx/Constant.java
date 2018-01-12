@@ -2,7 +2,7 @@ package com.lwx.mvprx;
 
 /**
  * <pre>
- *     author : liwx
+ *     @author : liwx
  *     e-mail : xxx@xx
  *     time   : 2017/12/20
  *     desc   : 常量类
@@ -48,11 +48,11 @@ public class Constant {
     /**
      * 网络可用时缓存最大时间（1分钟）
      */
-    public static final int NETWORK_IS_AVAILABLE_CACHE_MAXAGE = 1 * 60;
+    public static final int NETWORK_IS_AVAILABLE_CACHE_MAXAGE = 60;
     /**
      * 网络不可用时缓存最大时间（1天）
      */
-    public static final int NETWORK_NOT_AVAILABLE_CACHE_MAXAGE = 1 * 24 * 60 * 60;
+    public static final int NETWORK_NOT_AVAILABLE_CACHE_MAXAGE = 24 * 60 * 60;
     /**
      * 连接超时时间（10s）
      */
