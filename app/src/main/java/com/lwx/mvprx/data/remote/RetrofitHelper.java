@@ -18,7 +18,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * <pre>
- *     author : liwx
+ *     @author : liwx
  *     e-mail : xxx@xx
  *     time   : 2017/12/20
  *     desc   : Retrofit帮助类
@@ -27,11 +27,18 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class RetrofitHelper {
-    private static RetrofitHelper mRetrofitHelper;
-    private static ApiService mApiService;
+    private static volatile RetrofitHelper mRetrofitHelper;
+    private ApiService mApiService;
 
     public static RetrofitHelper getInstance() {
-        return mRetrofitHelper == null ? mRetrofitHelper = new RetrofitHelper() : mRetrofitHelper;
+        if (mRetrofitHelper == null) {
+            synchronized (RetrofitHelper.class) {
+                if (mRetrofitHelper == null) {
+                    mRetrofitHelper = new RetrofitHelper();
+                }
+            }
+        }
+        return mRetrofitHelper;
     }
 
     private RetrofitHelper() {

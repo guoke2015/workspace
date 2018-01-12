@@ -19,11 +19,18 @@ import io.reactivex.Flowable;
  */
 
 public class DataManager {
-    private static DataManager mDataManager;
-    private static ApiService mApiService;
+    private static volatile DataManager mDataManager;
+    private ApiService mApiService;
 
     public static DataManager getInstance() {
-        return mDataManager == null ? mDataManager = new DataManager() : mDataManager;
+        if (mDataManager == null) {
+            synchronized (DataManager.class) {
+                if (mDataManager == null) {
+                    mDataManager = new DataManager();
+                }
+            }
+        }
+        return mDataManager;
     }
 
     private DataManager() {

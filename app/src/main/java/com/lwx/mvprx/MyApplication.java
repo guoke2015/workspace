@@ -6,7 +6,7 @@ import com.lwx.mvprx.data.remote.RetrofitHelper;
 
 /**
  * <pre>
- *     author : liwx
+ *     @author : liwx
  *     e-mail : xxx@xx
  *     time   : 2017/12/20
  *     desc   : MyApplication
@@ -16,7 +16,7 @@ import com.lwx.mvprx.data.remote.RetrofitHelper;
 
 public class MyApplication extends Application {
     private static MyApplication myApplication = null;
-    private static RetrofitHelper mRetrofitHelper;
+    private RetrofitHelper mRetrofitHelper;
 
     public static MyApplication getInstance() {
         return myApplication;
