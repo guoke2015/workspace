@@ -6,7 +6,7 @@ import com.lwx.mvprx.MyApplication;
 import com.lwx.mvprx.base.BaseResult;
 import com.lwx.mvprx.data.bean.Joke;
 
-import io.reactivex.Observable;
+import io.reactivex.Flowable;
 
 /**
  * <pre>
@@ -20,7 +20,7 @@ import io.reactivex.Observable;
 
 public class DataManager {
     private static DataManager mDataManager;
-    private ApiService mApiService;
+    private static ApiService mApiService;
 
     public static DataManager getInstance() {
         return mDataManager == null ? mDataManager = new DataManager() : mDataManager;
@@ -39,7 +39,7 @@ public class DataManager {
      * @param time     时间戳（10位），如：1418816972
      * @return Joke
      */
-    public Observable<BaseResult<Joke>> getJokes(int page, int pagesize, String sort, String time) {
+    public Flowable<BaseResult<Joke>> getJokes(int page, int pagesize, String sort, String time) {
         return mApiService.getJokes(Constant.APPKEY, page, pagesize, sort, time);
     }
 }

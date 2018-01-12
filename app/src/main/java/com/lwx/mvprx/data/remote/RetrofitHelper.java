@@ -28,7 +28,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitHelper {
     private static RetrofitHelper mRetrofitHelper;
-    private ApiService mApiService;
+    private static ApiService mApiService;
 
     public static RetrofitHelper getInstance() {
         return mRetrofitHelper == null ? mRetrofitHelper = new RetrofitHelper() : mRetrofitHelper;

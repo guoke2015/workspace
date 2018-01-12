@@ -23,11 +23,10 @@ import java.util.List;
  *     author : liwx
  *     e-mail : xxx@xx
  *     time   : 2018/01/10
- *     desc   :
+ *     desc   : 自定义ConstraintLayout布局
  *     version: 1.0
  * </pre>
  */
-
 public class MyConstraintLayout extends ConstraintLayout implements MyLayout {
     private final String CONTENT = "type_content";
     private final String LOADING = "type_loading";
@@ -58,15 +57,15 @@ public class MyConstraintLayout extends ConstraintLayout implements MyLayout {
 
     public MyConstraintLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init(attrs);
+        init();
     }
 
     public MyConstraintLayout(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        init(attrs);
+        init();
     }
 
-    private void init(AttributeSet attrs) {
+    private void init() {
         inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 

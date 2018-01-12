@@ -6,7 +6,7 @@ import java.net.ConnectException;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 
-import io.reactivex.observers.DefaultObserver;
+import io.reactivex.subscribers.DisposableSubscriber;
 import retrofit2.HttpException;
 
 /**
@@ -19,7 +19,7 @@ import retrofit2.HttpException;
  * </pre>
  */
 
-public abstract class BaseObserver<T> extends DefaultObserver<BaseResult<T>> {
+public abstract class BaseObserver<T> extends DisposableSubscriber<BaseResult<T>> {
     @Override
     public void onNext(BaseResult<T> tBaseResult) {
         //获取数据成功

@@ -37,7 +37,6 @@ public class MainActivity extends BaseActivity<JokeView, JokePresenter<JokeView>
         jokeInfoBt = findViewById(R.id.get_jokes);
 
         myLayout.showContent();
-//        myDailog = new MyDailog(this);
         ToastUtils.init(true);
     }
 
@@ -75,7 +74,7 @@ public class MainActivity extends BaseActivity<JokeView, JokePresenter<JokeView>
 
     @Override
     public void showSuccess(Joke joke) {
-        if (joke.getData().size()>0){
+        if (joke.getData().size() > 0) {
             StringBuilder sb = new StringBuilder();
             for (Joke.DataBean dataBean : joke.getData()) {
                 sb.append(dataBean.getContent());
@@ -83,7 +82,7 @@ public class MainActivity extends BaseActivity<JokeView, JokePresenter<JokeView>
             }
             jokeInfoTv.setText(sb);
             myLayout.showContent();
-        }else {
+        } else {
             myLayout.showEmpty(retryOnClickListener);
         }
 
@@ -97,7 +96,7 @@ public class MainActivity extends BaseActivity<JokeView, JokePresenter<JokeView>
     /**
      * 定义自定义点击事件
      */
-    private View.OnClickListener retryOnClickListener=new View.OnClickListener() {
+    private View.OnClickListener retryOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             mPresenter.getJokes(1, 5, "desc", String.valueOf(System.currentTimeMillis() / 1000));

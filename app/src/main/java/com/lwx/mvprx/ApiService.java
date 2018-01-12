@@ -3,7 +3,7 @@ package com.lwx.mvprx;
 import com.lwx.mvprx.base.BaseResult;
 import com.lwx.mvprx.data.bean.Joke;
 
-import io.reactivex.Observable;
+import io.reactivex.Flowable;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
@@ -29,5 +29,5 @@ public interface ApiService {
      * @return Joke
      */
     @GET("list.from")
-    Observable<BaseResult<Joke>> getJokes(@Query("key") String key, @Query("page") int page, @Query("pagesize") int pagesize, @Query("sort")String sort, @Query("time") String time);
+    Flowable<BaseResult<Joke>> getJokes(@Query("key") String key, @Query("page") int page, @Query("pagesize") int pagesize, @Query("sort")String sort, @Query("time") String time);
 }
