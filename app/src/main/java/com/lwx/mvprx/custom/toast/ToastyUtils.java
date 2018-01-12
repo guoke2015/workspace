@@ -1,4 +1,4 @@
-package com.lwx.mvprx.widget;
+package com.lwx.mvprx.custom.toast;
 
 import android.content.Context;
 import android.graphics.PorterDuff;

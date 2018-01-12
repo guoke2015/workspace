@@ -5,7 +5,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.widget.Toast;
 
-import com.lwx.mvprx.widget.Toasty;
+import com.lwx.mvprx.custom.toast.Toasty;
 
 /**
  * <pre>

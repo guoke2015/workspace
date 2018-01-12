@@ -1,4 +1,4 @@
-package com.lwx.mvprx.widget;
+package com.lwx.mvprx.custom.toast;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
