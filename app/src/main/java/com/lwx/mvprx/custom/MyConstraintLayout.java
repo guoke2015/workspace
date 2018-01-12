@@ -20,7 +20,7 @@ import java.util.List;
 
 /**
  * <pre>
- *     author : liwx
+ *     @author : liwx
  *     e-mail : xxx@xx
  *     time   : 2018/01/10
  *     desc   : 自定义ConstraintLayout布局

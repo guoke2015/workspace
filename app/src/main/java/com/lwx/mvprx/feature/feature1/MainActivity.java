@@ -12,6 +12,15 @@ import com.lwx.mvprx.data.bean.Joke;
 import com.lwx.mvprx.util.ToastUtils;
 import com.trello.rxlifecycle2.LifecycleTransformer;
 
+/**
+ * <pre>
+ *     @author : liwx
+ *     e-mail : xxx@xx
+ *     time   : 2017/12/20
+ *     desc   : MainActivity
+ *     version: 1.0
+ * </pre>
+ */
 public class MainActivity extends BaseActivity<JokeView, JokePresenter<JokeView>> implements JokeView {
     private TextView jokeInfoTv;
     private Button jokeInfoBt;
@@ -53,7 +62,7 @@ public class MainActivity extends BaseActivity<JokeView, JokePresenter<JokeView>
     }
 
     @Override
-    protected JokePresenter<JokeView> creatPresenter() {
+    protected JokePresenter<JokeView> setPresenter() {
         return new JokePresenter();
     }
 

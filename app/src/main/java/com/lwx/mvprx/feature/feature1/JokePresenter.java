@@ -9,7 +9,7 @@ import com.lwx.mvprx.data.remote.RxSchedulers;
 
 /**
  * <pre>
- *     author : liwx
+ *     @author : liwx
  *     e-mail : xxx@xx
  *     time   : 2017/12/20
  *     desc   : 笑话大全表示层

@@ -22,7 +22,7 @@ public abstract class BaseActivity<V,P extends BasePresenter<V>> extends RxAppCo
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mPresenter=creatPresenter();
+        mPresenter= setPresenter();
         mPresenter.attachView((V) this);
     }
 
@@ -30,7 +30,7 @@ public abstract class BaseActivity<V,P extends BasePresenter<V>> extends RxAppCo
      * 创建表示层
      * @return presenter
      */
-    protected abstract P creatPresenter();
+    protected abstract P setPresenter();
 
     @Override
     protected void onDestroy() {
