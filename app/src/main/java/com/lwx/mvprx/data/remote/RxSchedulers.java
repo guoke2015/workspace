@@ -31,8 +31,7 @@ public class RxSchedulers {
         return new FlowableTransformer<T, T>() {
             @Override
             public Publisher<T> apply(@NonNull Flowable<T> upstream) {
-                return upstream
-                        .subscribeOn(Schedulers.io())
+                return upstream.subscribeOn(Schedulers.io())
                         .doOnSubscribe(new Consumer<Subscription>() {
                             @Override
                             public void accept(Subscription subscription) throws Exception {

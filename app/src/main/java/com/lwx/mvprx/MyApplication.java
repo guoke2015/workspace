@@ -2,7 +2,7 @@ package com.lwx.mvprx;
 
 import android.app.Application;
 
-import com.lwx.mvprx.data.GreenDaoManager;
+import com.lwx.mvprx.data.local.GreenDaoManager;
 import com.lwx.mvprx.data.remote.RetrofitHelper;
 
 /**

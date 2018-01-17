@@ -69,6 +69,14 @@ public class Constant {
 
     /******************** 存储相关常量 ********************/
     /**
+     * 保存在sp中的文件名
+     */
+    public static final String SP_DATA = "SP_DATA";
+    /**
+     * 是否第一次启动标识
+     */
+    public static final String FIRST = "FIRST";
+    /**
      * Byte与Byte的倍数
      */
     public static final int BYTE = 1;

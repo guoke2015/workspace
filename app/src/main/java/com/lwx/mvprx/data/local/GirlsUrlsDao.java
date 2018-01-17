@@ -24,22 +24,7 @@ public class GirlsUrlsDao extends AbstractDao<GirlsUrls, Long> {
     public static class Properties {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
         public final static Property ParentId = new Property(1, Long.class, "parentId", false, "PARENT_ID");
-        public final static Property Title = new Property(2, String.class, "title", false, "TITLE");
-        public final static Property Url1 = new Property(3, String.class, "url1", false, "URL1");
-        public final static Property Url2 = new Property(4, String.class, "url2", false, "URL2");
-        public final static Property Url3 = new Property(5, String.class, "url3", false, "URL3");
-        public final static Property Url4 = new Property(6, String.class, "url4", false, "URL4");
-        public final static Property Url5 = new Property(7, String.class, "url5", false, "URL5");
-        public final static Property Url6 = new Property(8, String.class, "url6", false, "URL6");
-        public final static Property Url7 = new Property(9, String.class, "url7", false, "URL7");
-        public final static Property Url8 = new Property(10, String.class, "url8", false, "URL8");
-        public final static Property Url9 = new Property(11, String.class, "url9", false, "URL9");
-        public final static Property Url10 = new Property(12, String.class, "url10", false, "URL10");
-        public final static Property Url11 = new Property(13, String.class, "url11", false, "URL11");
-        public final static Property Url12 = new Property(14, String.class, "url12", false, "URL12");
-        public final static Property Url13 = new Property(15, String.class, "url13", false, "URL13");
-        public final static Property Url14 = new Property(16, String.class, "url14", false, "URL14");
-        public final static Property Url15 = new Property(17, String.class, "url15", false, "URL15");
+        public final static Property Url = new Property(2, String.class, "url", false, "URL");
     }
 
 
@@ -57,22 +42,7 @@ public class GirlsUrlsDao extends AbstractDao<GirlsUrls, Long> {
         db.execSQL("CREATE TABLE " + constraint + "\"GIRLS_URLS\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
                 "\"PARENT_ID\" INTEGER," + // 1: parentId
-                "\"TITLE\" TEXT," + // 2: title
-                "\"URL1\" TEXT," + // 3: url1
-                "\"URL2\" TEXT," + // 4: url2
-                "\"URL3\" TEXT," + // 5: url3
-                "\"URL4\" TEXT," + // 6: url4
-                "\"URL5\" TEXT," + // 7: url5
-                "\"URL6\" TEXT," + // 8: url6
-                "\"URL7\" TEXT," + // 9: url7
-                "\"URL8\" TEXT," + // 10: url8
-                "\"URL9\" TEXT," + // 11: url9
-                "\"URL10\" TEXT," + // 12: url10
-                "\"URL11\" TEXT," + // 13: url11
-                "\"URL12\" TEXT," + // 14: url12
-                "\"URL13\" TEXT," + // 15: url13
-                "\"URL14\" TEXT," + // 16: url14
-                "\"URL15\" TEXT);"); // 17: url15
+                "\"URL\" TEXT);"); // 2: url
     }
 
     /** Drops the underlying database table. */
@@ -95,84 +65,9 @@ public class GirlsUrlsDao extends AbstractDao<GirlsUrls, Long> {
             stmt.bindLong(2, parentId);
         }
  
-        String title = entity.getTitle();
-        if (title != null) {
-            stmt.bindString(3, title);
-        }
- 
-        String url1 = entity.getUrl1();
-        if (url1 != null) {
-            stmt.bindString(4, url1);
-        }
- 
-        String url2 = entity.getUrl2();
-        if (url2 != null) {
-            stmt.bindString(5, url2);
-        }
- 
-        String url3 = entity.getUrl3();
-        if (url3 != null) {
-            stmt.bindString(6, url3);
-        }
- 
-        String url4 = entity.getUrl4();
-        if (url4 != null) {
-            stmt.bindString(7, url4);
-        }
- 
-        String url5 = entity.getUrl5();
-        if (url5 != null) {
-            stmt.bindString(8, url5);
-        }
- 
-        String url6 = entity.getUrl6();
-        if (url6 != null) {
-            stmt.bindString(9, url6);
-        }
- 
-        String url7 = entity.getUrl7();
-        if (url7 != null) {
-            stmt.bindString(10, url7);
-        }
- 
-        String url8 = entity.getUrl8();
-        if (url8 != null) {
-            stmt.bindString(11, url8);
-        }
- 
-        String url9 = entity.getUrl9();
-        if (url9 != null) {
-            stmt.bindString(12, url9);
-        }
- 
-        String url10 = entity.getUrl10();
-        if (url10 != null) {
-            stmt.bindString(13, url10);
-        }
- 
-        String url11 = entity.getUrl11();
-        if (url11 != null) {
-            stmt.bindString(14, url11);
-        }
- 
-        String url12 = entity.getUrl12();
-        if (url12 != null) {
-            stmt.bindString(15, url12);
-        }
- 
-        String url13 = entity.getUrl13();
-        if (url13 != null) {
-            stmt.bindString(16, url13);
-        }
- 
-        String url14 = entity.getUrl14();
-        if (url14 != null) {
-            stmt.bindString(17, url14);
-        }
- 
-        String url15 = entity.getUrl15();
-        if (url15 != null) {
-            stmt.bindString(18, url15);
+        String url = entity.getUrl();
+        if (url != null) {
+            stmt.bindString(3, url);
         }
     }
 
@@ -190,84 +85,9 @@ public class GirlsUrlsDao extends AbstractDao<GirlsUrls, Long> {
             stmt.bindLong(2, parentId);
         }
  
-        String title = entity.getTitle();
-        if (title != null) {
-            stmt.bindString(3, title);
-        }
- 
-        String url1 = entity.getUrl1();
-        if (url1 != null) {
-            stmt.bindString(4, url1);
-        }
- 
-        String url2 = entity.getUrl2();
-        if (url2 != null) {
-            stmt.bindString(5, url2);
-        }
- 
-        String url3 = entity.getUrl3();
-        if (url3 != null) {
-            stmt.bindString(6, url3);
-        }
- 
-        String url4 = entity.getUrl4();
-        if (url4 != null) {
-            stmt.bindString(7, url4);
-        }
- 
-        String url5 = entity.getUrl5();
-        if (url5 != null) {
-            stmt.bindString(8, url5);
-        }
- 
-        String url6 = entity.getUrl6();
-        if (url6 != null) {
-            stmt.bindString(9, url6);
-        }
- 
-        String url7 = entity.getUrl7();
-        if (url7 != null) {
-            stmt.bindString(10, url7);
-        }
- 
-        String url8 = entity.getUrl8();
-        if (url8 != null) {
-            stmt.bindString(11, url8);
-        }
- 
-        String url9 = entity.getUrl9();
-        if (url9 != null) {
-            stmt.bindString(12, url9);
-        }
- 
-        String url10 = entity.getUrl10();
-        if (url10 != null) {
-            stmt.bindString(13, url10);
-        }
- 
-        String url11 = entity.getUrl11();
-        if (url11 != null) {
-            stmt.bindString(14, url11);
-        }
- 
-        String url12 = entity.getUrl12();
-        if (url12 != null) {
-            stmt.bindString(15, url12);
-        }
- 
-        String url13 = entity.getUrl13();
-        if (url13 != null) {
-            stmt.bindString(16, url13);
-        }
- 
-        String url14 = entity.getUrl14();
-        if (url14 != null) {
-            stmt.bindString(17, url14);
-        }
- 
-        String url15 = entity.getUrl15();
-        if (url15 != null) {
-            stmt.bindString(18, url15);
+        String url = entity.getUrl();
+        if (url != null) {
+            stmt.bindString(3, url);
         }
     }
 
@@ -281,22 +101,7 @@ public class GirlsUrlsDao extends AbstractDao<GirlsUrls, Long> {
         GirlsUrls entity = new GirlsUrls( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
             cursor.isNull(offset + 1) ? null : cursor.getLong(offset + 1), // parentId
-            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // title
-            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // url1
-            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // url2
-            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // url3
-            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // url4
-            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7), // url5
-            cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8), // url6
-            cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9), // url7
-            cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10), // url8
-            cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11), // url9
-            cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12), // url10
-            cursor.isNull(offset + 13) ? null : cursor.getString(offset + 13), // url11
-            cursor.isNull(offset + 14) ? null : cursor.getString(offset + 14), // url12
-            cursor.isNull(offset + 15) ? null : cursor.getString(offset + 15), // url13
-            cursor.isNull(offset + 16) ? null : cursor.getString(offset + 16), // url14
-            cursor.isNull(offset + 17) ? null : cursor.getString(offset + 17) // url15
+            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2) // url
         );
         return entity;
     }
@@ -305,22 +110,7 @@ public class GirlsUrlsDao extends AbstractDao<GirlsUrls, Long> {
     public void readEntity(Cursor cursor, GirlsUrls entity, int offset) {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setParentId(cursor.isNull(offset + 1) ? null : cursor.getLong(offset + 1));
-        entity.setTitle(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
-        entity.setUrl1(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
-        entity.setUrl2(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
-        entity.setUrl3(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
-        entity.setUrl4(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
-        entity.setUrl5(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
-        entity.setUrl6(cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8));
-        entity.setUrl7(cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9));
-        entity.setUrl8(cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10));
-        entity.setUrl9(cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11));
-        entity.setUrl10(cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12));
-        entity.setUrl11(cursor.isNull(offset + 13) ? null : cursor.getString(offset + 13));
-        entity.setUrl12(cursor.isNull(offset + 14) ? null : cursor.getString(offset + 14));
-        entity.setUrl13(cursor.isNull(offset + 15) ? null : cursor.getString(offset + 15));
-        entity.setUrl14(cursor.isNull(offset + 16) ? null : cursor.getString(offset + 16));
-        entity.setUrl15(cursor.isNull(offset + 17) ? null : cursor.getString(offset + 17));
+        entity.setUrl(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
      }
     
     @Override

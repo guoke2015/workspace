@@ -5,6 +5,11 @@ import com.lwx.mvprx.Constant;
 import com.lwx.mvprx.MyApplication;
 import com.lwx.mvprx.base.BaseResult;
 import com.lwx.mvprx.data.bean.Joke;
+import com.lwx.mvprx.data.local.GreenDaoManager;
+
+import org.greenrobot.greendao.query.WhereCondition;
+
+import java.util.List;
 
 import io.reactivex.Flowable;
 
@@ -18,7 +23,7 @@ import io.reactivex.Flowable;
  * </pre>
  */
 
-public class DataManager {
+public class DataManager<T> {
     private static volatile DataManager mDataManager;
     private ApiService mApiService;
 
@@ -48,5 +53,47 @@ public class DataManager {
      */
     public Flowable<BaseResult<Joke>> getJokes(int page, int pagesize, String sort, String time) {
         return mApiService.getJokes(Constant.APPKEY, page, pagesize, sort, time);
+    }
+
+
+    /**
+     * 向数据库中插入或更新数据(数组)
+     *
+     * @param list 要插入的数据集合(对象)
+     * @return 插入或更新成功数据个数
+     */
+    public Long insertToArray(final List<T> list) {
+        return GreenDaoManager.getInstance().insertToArray(list);
+    }
+
+    /**
+     * 向数据库中插入或更新数据(单条数据)
+     *
+     * @param t 对象
+     * @return
+     */
+    public long insertOrReplace(T t) {
+        return GreenDaoManager.getInstance().insertOrReplace(t);
+    }
+
+    /**
+     * 根据where条件查询数据
+     *
+     * @param t     对象
+     * @param where where条件，如：GirlsDao.Properties.Date.eq("date")
+     * @return list列表
+     */
+    public List<T> queryFromWhere(T t, WhereCondition where) {
+        return GreenDaoManager.getInstance().queryFromWhere(t, where);
+    }
+
+    /**
+     * 查询所有数据
+     *
+     * @param t
+     * @return
+     */
+    public List<T> queryAllData(T t) {
+        return GreenDaoManager.getInstance().queryAllData(t);
     }
 }

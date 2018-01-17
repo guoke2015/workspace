@@ -10,6 +10,7 @@ import com.lwx.mvprx.R;
 import com.lwx.mvprx.base.BaseActivity;
 import com.lwx.mvprx.custom.layout.MyLayout;
 import com.lwx.mvprx.data.bean.Joke;
+import com.lwx.mvprx.util.DateUtil;
 import com.lwx.mvprx.util.ToastUtils;
 import com.trello.rxlifecycle2.LifecycleTransformer;
 
@@ -25,6 +26,7 @@ import com.trello.rxlifecycle2.LifecycleTransformer;
 public class MainActivity extends BaseActivity<JokeView, JokePresenter<JokeView>> implements JokeView {
     private TextView jokeInfoTv;
     private Button jokeInfoBt;
+    private Button girlsInfoBt;
 
     private MyLayout myLayout;
 
@@ -45,9 +47,12 @@ public class MainActivity extends BaseActivity<JokeView, JokePresenter<JokeView>
         myLayout = findViewById(R.id.my_layout);
         jokeInfoTv = findViewById(R.id.joke_info);
         jokeInfoBt = findViewById(R.id.get_jokes);
+        girlsInfoBt = findViewById(R.id.get_girls);
 
         myLayout.showContent();
         ToastUtils.init(true);
+
+        mPresenter.isFirstInit();
     }
 
     /**
@@ -58,6 +63,13 @@ public class MainActivity extends BaseActivity<JokeView, JokePresenter<JokeView>
             @Override
             public void onClick(View view) {
                 mPresenter.getJokes(1, 5, Constant.DESC, String.valueOf(System.currentTimeMillis() / 1000));
+            }
+        });
+
+        girlsInfoBt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mPresenter.queryGirlsFromDate(DateUtil.stringtoDate("2018-01-13", DateUtil.LONG_DATE_FORMAT));
             }
         });
     }
