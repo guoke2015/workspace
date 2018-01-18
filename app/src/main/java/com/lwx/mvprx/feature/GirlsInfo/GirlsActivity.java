@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.lwx.mvprx.R;
 import com.lwx.mvprx.base.BaseActivity;
-import com.lwx.mvprx.custom.MyDecoration;
+import com.lwx.mvprx.custom.decoration.MyDecoration;
 import com.lwx.mvprx.custom.layout.MyLayout;
 import com.lwx.mvprx.util.DateUtil;
 import com.trello.rxlifecycle2.LifecycleTransformer;

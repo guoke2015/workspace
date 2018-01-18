@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.lwx.mvprx.data.local.GreenDaoManager;
 import com.lwx.mvprx.data.remote.RetrofitHelper;
+import com.squareup.leakcanary.LeakCanary;
 
 /**
  * <pre>
@@ -27,6 +28,12 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         myApplication = this;
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            // This process is dedicated to LeakCanary for heap analysis.
+            // You should not init your app in this process.
+            return;
+        }
+        LeakCanary.install(this);
         mRetrofitHelper = RetrofitHelper.getInstance();
         GreenDaoManager.getInstance();
     }

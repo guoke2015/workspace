@@ -25,7 +25,7 @@ public class HttpCacheInterceptor implements Interceptor {
     @Override
     public Response intercept(Chain chain) throws IOException {
         Request request = chain.request();
-        if (NetworkUtils.isAvailableByPing(MyApplication.getInstance())) {
+        if (NetworkUtils.isAvailableByPing(MyApplication.getInstance().getApplicationContext())) {
             Response response = chain.proceed(request);
             return response.newBuilder()
                     .removeHeader("Pragma")

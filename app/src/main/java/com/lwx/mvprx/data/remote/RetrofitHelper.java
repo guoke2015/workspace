@@ -44,7 +44,7 @@ public class RetrofitHelper {
     private RetrofitHelper() {
         OkHttpClient.Builder client = new OkHttpClient.Builder();
         //缓存文件
-        final File cacheFile = new File(FileUtils.getDiskCacheDir(MyApplication.getInstance()), Constant.CACHE_FILE_NAME);
+        final File cacheFile = new File(FileUtils.getDiskCacheDir(MyApplication.getInstance().getApplicationContext()), Constant.CACHE_FILE_NAME);
         //缓存
         final Cache mCache = new Cache(cacheFile, Constant.CACHE_FILE_MAXSIZE);
         if (BuildConfig.DEBUG) {
