@@ -1,5 +1,6 @@
-package com.lwx.mvprx.feature.feature1;
+package com.lwx.mvprx.feature.JokeInfo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,7 +11,7 @@ import com.lwx.mvprx.R;
 import com.lwx.mvprx.base.BaseActivity;
 import com.lwx.mvprx.custom.layout.MyLayout;
 import com.lwx.mvprx.data.bean.Joke;
-import com.lwx.mvprx.util.DateUtil;
+import com.lwx.mvprx.feature.GirlsInfo.GirlsActivity;
 import com.lwx.mvprx.util.ToastUtils;
 import com.trello.rxlifecycle2.LifecycleTransformer;
 
@@ -69,7 +70,7 @@ public class MainActivity extends BaseActivity<JokeView, JokePresenter<JokeView>
         girlsInfoBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mPresenter.queryGirlsFromDate(DateUtil.stringtoDate("2018-01-13", DateUtil.LONG_DATE_FORMAT));
+                startActivity(new Intent(MainActivity.this, GirlsActivity.class));
             }
         });
     }

@@ -6,7 +6,7 @@
     android:id="@+id/my_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.lwx.mvprx.feature.feature1.GirlsActivity">
+    tools:context="com.lwx.mvprx.feature.GirlsInfo.GirlsActivity">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/girls_rec"

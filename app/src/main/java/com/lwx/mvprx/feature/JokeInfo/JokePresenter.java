@@ -1,4 +1,4 @@
-package com.lwx.mvprx.feature.feature1;
+package com.lwx.mvprx.feature.JokeInfo;
 
 import com.lwx.mvprx.Constant;
 import com.lwx.mvprx.MyApplication;
@@ -8,14 +8,12 @@ import com.lwx.mvprx.base.BaseResult;
 import com.lwx.mvprx.data.DataManager;
 import com.lwx.mvprx.data.bean.Joke;
 import com.lwx.mvprx.data.local.Girls;
-import com.lwx.mvprx.data.local.GirlsDao;
 import com.lwx.mvprx.data.local.GirlsUrls;
 import com.lwx.mvprx.data.remote.RxSchedulers;
 import com.lwx.mvprx.test.test;
 import com.lwx.mvprx.util.SPUtils;
 import com.lwx.mvprx.util.ToastUtils;
 
-import java.util.Date;
 import java.util.List;
 
 import io.reactivex.Observable;
@@ -43,7 +41,7 @@ public class JokePresenter<V extends JokeView> extends BasePresenter<V> {
         super();
         mDataManager = DataManager.getInstance();
     }
-    
+
     /**
      * 获取笑话大全信息
      *
@@ -83,7 +81,7 @@ public class JokePresenter<V extends JokeView> extends BasePresenter<V> {
                             mViewRef.get().showFail(err);
                         }
                     })*/
-                    .compose(RxSchedulers.<BaseResult<Joke>>io_main(mViewRef.get()))
+                    .compose(RxSchedulers.<BaseResult<Joke>>flow_io_main(mViewRef.get()))
                     .subscribeWith(new BaseObserver<Joke>() {
                         @Override
                         public void resultSuccess(Joke joke) {
@@ -162,35 +160,5 @@ public class JokePresenter<V extends JokeView> extends BasePresenter<V> {
                         }
                     });
         }
-    }
-
-    /**
-     * 根据时间查询Girls信息
-     *
-     * @param date
-     */
-    public void queryGirlsFromDate(final Date date) {
-        Observable.create(new ObservableOnSubscribe<List<Girls>>() {
-            @Override
-            public void subscribe(ObservableEmitter<List<Girls>> e) throws Exception {
-                e.onNext(mDataManager.queryFromWhere(new Girls(), GirlsDao.Properties.Date.eq(date)));
-                e.onComplete();
-            }
-        })
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<List<Girls>>() {
-                    @Override
-                    public void accept(List<Girls> girls) throws Exception {
-                        StringBuilder sb = new StringBuilder();
-                        for (Girls girl : girls) {
-                            sb.append(girl.getTitle());
-                            sb.append(":");
-                            sb.append(girl.getUrl());
-                            sb.append("\r\n");
-                        }
-                        ToastUtils.success(MyApplication.getInstance().getApplicationContext(), sb);
-                    }
-                });
     }
 }

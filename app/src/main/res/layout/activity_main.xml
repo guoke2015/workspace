@@ -6,7 +6,7 @@
     android:id="@+id/my_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.lwx.mvprx.feature.feature1.MainActivity">
+    tools:context="com.lwx.mvprx.feature.JokeInfo.MainActivity">
 
     <Button
         android:id="@+id/get_jokes"

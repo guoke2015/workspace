@@ -7,8 +7,12 @@ import org.reactivestreams.Subscription;
 
 import io.reactivex.Flowable;
 import io.reactivex.FlowableTransformer;
+import io.reactivex.Observable;
+import io.reactivex.ObservableSource;
+import io.reactivex.ObservableTransformer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
@@ -26,8 +30,12 @@ import io.reactivex.schedulers.Schedulers;
 public class RxSchedulers {
     /**
      * 基本请求
+     *
+     * @param baseView
+     * @param <T>
+     * @return
      */
-    public static <T> FlowableTransformer<T, T> io_main(final IBaseView baseView) {
+    public static <T> FlowableTransformer<T, T> flow_io_main(final IBaseView baseView) {
         return new FlowableTransformer<T, T>() {
             @Override
             public Publisher<T> apply(@NonNull Flowable<T> upstream) {
@@ -35,6 +43,37 @@ public class RxSchedulers {
                         .doOnSubscribe(new Consumer<Subscription>() {
                             @Override
                             public void accept(Subscription subscription) throws Exception {
+                                baseView.showLoading();
+                            }
+                        })
+                        .subscribeOn(AndroidSchedulers.mainThread())
+                        .doOnTerminate(new Action() {
+                            @Override
+                            public void run() throws Exception {
+                                baseView.hideLoading();
+                            }
+                        })
+                        .compose(baseView.bindLifecycle())
+                        .observeOn(AndroidSchedulers.mainThread());
+            }
+        };
+    }
+
+    /**
+     * 基本请求
+     *
+     * @param baseView
+     * @param <T>
+     * @return
+     */
+    public static <T> ObservableTransformer<T, T> observable_io_main(final IBaseView baseView) {
+        return new ObservableTransformer<T, T>() {
+            @Override
+            public ObservableSource<T> apply(Observable<T> upstream) {
+                return upstream.subscribeOn(Schedulers.io())
+                        .doOnSubscribe(new Consumer<Disposable>() {
+                            @Override
+                            public void accept(Disposable disposable) throws Exception {
                                 baseView.showLoading();
                             }
                         })

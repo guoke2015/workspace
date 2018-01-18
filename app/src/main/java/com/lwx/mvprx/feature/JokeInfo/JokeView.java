@@ -1,4 +1,4 @@
-package com.lwx.mvprx.feature.feature1;
+package com.lwx.mvprx.feature.JokeInfo;
 
 import com.lwx.mvprx.base.IBaseView;
 import com.lwx.mvprx.data.bean.Joke;
