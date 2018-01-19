@@ -8,6 +8,8 @@ import org.reactivestreams.Subscription;
 import io.reactivex.Flowable;
 import io.reactivex.FlowableTransformer;
 import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.ObservableSource;
 import io.reactivex.ObservableTransformer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -88,5 +90,23 @@ public class RxSchedulers {
                         .observeOn(AndroidSchedulers.mainThread());
             }
         };
+    }
+
+    /**
+     * Observable基本使用
+     * @param t
+     * @param <T>
+     * @return
+     */
+    public static <T> Observable<T> observable(final T t) {
+        return Observable.create(new ObservableOnSubscribe<T>() {
+            @Override
+            public void subscribe(ObservableEmitter<T> e) throws Exception {
+                e.onNext(t);
+                e.onComplete();
+            }
+        })
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
     }
 }

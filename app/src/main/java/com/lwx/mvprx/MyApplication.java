@@ -19,6 +19,7 @@ import com.squareup.leakcanary.LeakCanary;
 public class MyApplication extends Application {
     private static MyApplication myApplication = null;
     private RetrofitHelper mRetrofitHelper;
+    private GreenDaoManager mGreenDaoManager;
 
     public static MyApplication getInstance() {
         return myApplication;
@@ -35,7 +36,7 @@ public class MyApplication extends Application {
         }
         LeakCanary.install(this);
         mRetrofitHelper = RetrofitHelper.getInstance();
-        GreenDaoManager.getInstance();
+        mGreenDaoManager=GreenDaoManager.getInstance();
     }
 
     /**
@@ -45,5 +46,13 @@ public class MyApplication extends Application {
      */
     public RetrofitHelper getRetrofitHelper() {
         return mRetrofitHelper;
+    }
+
+    /**
+     * 获取GreenDao管理类
+     * @return
+     */
+    public GreenDaoManager getGreenDaoManager(){
+        return mGreenDaoManager;
     }
 }

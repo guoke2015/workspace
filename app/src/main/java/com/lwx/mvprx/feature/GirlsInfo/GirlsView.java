@@ -1,6 +1,7 @@
 package com.lwx.mvprx.feature.GirlsInfo;
 
 import com.lwx.mvprx.base.IBaseView;
+import com.lwx.mvprx.data.local.Girls;
 
 import java.util.List;
 
@@ -14,13 +15,13 @@ import java.util.List;
  * </pre>
  */
 
-public interface GirlsView<T> extends IBaseView {
+public interface GirlsView extends IBaseView {
     /**
      * 显示成功信息
      *
      * @param list
      */
-    void showSuccess(List<T> list);
+    void showSuccess(List<Girls> list);
 
     /**
      * 显示失败信息

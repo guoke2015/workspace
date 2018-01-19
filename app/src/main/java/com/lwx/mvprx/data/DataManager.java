@@ -5,7 +5,6 @@ import com.lwx.mvprx.Constant;
 import com.lwx.mvprx.MyApplication;
 import com.lwx.mvprx.base.BaseResult;
 import com.lwx.mvprx.data.bean.Joke;
-import com.lwx.mvprx.data.local.GreenDaoManager;
 
 import org.greenrobot.greendao.query.WhereCondition;
 
@@ -15,7 +14,7 @@ import io.reactivex.Flowable;
 
 /**
  * <pre>
- *     author : liwx
+ *     @author : liwx
  *     e-mail : xxx@xx
  *     time   : 2017/12/20
  *     desc   : 数据处理类
@@ -63,7 +62,7 @@ public class DataManager<T> {
      * @return 插入或更新成功数据个数
      */
     public Long insertToArray(final List<T> list) {
-        return GreenDaoManager.getInstance().insertToArray(list);
+        return MyApplication.getInstance().getGreenDaoManager().insertToArray(list);
     }
 
     /**
@@ -73,7 +72,7 @@ public class DataManager<T> {
      * @return
      */
     public long insertOrReplace(T t) {
-        return GreenDaoManager.getInstance().insertOrReplace(t);
+        return MyApplication.getInstance().getGreenDaoManager().insertOrReplace(t);
     }
 
     /**
@@ -84,7 +83,7 @@ public class DataManager<T> {
      * @return list列表
      */
     public List<T> queryFromWhere(T t, WhereCondition where) {
-        return GreenDaoManager.getInstance().queryFromWhere(t, where);
+        return MyApplication.getInstance().getGreenDaoManager().queryFromWhere(t, where);
     }
 
     /**
@@ -94,6 +93,6 @@ public class DataManager<T> {
      * @return
      */
     public List<T> queryAllData(T t) {
-        return GreenDaoManager.getInstance().queryAllData(t);
+        return MyApplication.getInstance().getGreenDaoManager().queryAllData(t);
     }
 }

@@ -102,6 +102,33 @@ public class JokePresenter<V extends JokeView> extends BasePresenter<V> {
     public void isFirstInit() {
         final SPUtils utils = new SPUtils(MyApplication.getInstance().getApplicationContext(), Constant.SP_DATA);
         if (utils.getBoolean(Constant.FIRST, true)) {
+
+            ///将外部数据库导入（导入成功，但查询时未查询到数据,原因暂时未知）
+            /*//数据库路径
+            StringBuilder sb = new StringBuilder();
+            sb.append("/data/data/");
+            sb.append(MyApplication.getInstance().getApplicationContext().getPackageName());
+            sb.append("/databases/girls-db");
+            AssetManager assetManager = MyApplication.getInstance().getApplicationContext().getAssets();
+            try {
+                RxSchedulers.observable(FileUtils.writeFileFromIS(sb.toString(),
+                        assetManager.open("girls-db"), true))
+                        .subscribe(new Consumer<Boolean>() {
+                            @Override
+                            public void accept(Boolean aBoolean) throws Exception {
+                                if (aBoolean) {
+                                    utils.putBoolean(Constant.FIRST, false);
+                                    ToastUtils.success(MyApplication.getInstance().getApplicationContext(), "插入数据成功");
+                                } else {
+                                    utils.putBoolean(Constant.FIRST, true);
+                                    ToastUtils.success(MyApplication.getInstance().getApplicationContext(), "插入数据失败");
+                                }
+                            }
+                        });
+            } catch (IOException e) {
+                e.printStackTrace();
+            }*/
+
             Observable.create(new ObservableOnSubscribe<List<Girls>>() {
 
                 @Override
