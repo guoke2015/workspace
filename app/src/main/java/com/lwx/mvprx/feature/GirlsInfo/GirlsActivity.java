@@ -59,11 +59,11 @@ public class GirlsActivity extends BaseActivity<GirlsView, GirlsPresenter<GirlsV
     public void showSuccess(final List<Girls> list) {
         if (list != null && list.size() > 0) {
             girls.addAll(list);
-            myLayout.showContent();
             girlgRecyclerViewAdapter.notifyDataSetChanged();
+//            myLayout.showContent();
         } else {
             if (girls.size() > 0) {
-                myLayout.showContent();
+//                myLayout.showContent();
             } else {
                 myLayout.showEmpty(null);
             }
@@ -101,7 +101,7 @@ public class GirlsActivity extends BaseActivity<GirlsView, GirlsPresenter<GirlsV
 
     @Override
     public void showLoading() {
-        myLayout.showLoading();
+//        myLayout.showLoading();
     }
 
     @Override
@@ -116,8 +116,8 @@ public class GirlsActivity extends BaseActivity<GirlsView, GirlsPresenter<GirlsV
 
     @Override
     public void onScrollToTop() {
-        day = 0;
-        mPresenter.queryGirlsFromDate(DateUtil.stringtoDate(date, DateUtil.LONG_DATE_FORMAT));
+//        day = 0;
+//        mPresenter.queryGirlsFromDate(DateUtil.stringtoDate(date, DateUtil.LONG_DATE_FORMAT));
     }
 
     @Override
