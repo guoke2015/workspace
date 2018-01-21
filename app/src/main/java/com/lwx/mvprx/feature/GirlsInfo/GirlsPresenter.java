@@ -1,18 +1,31 @@
 package com.lwx.mvprx.feature.GirlsInfo;
 
+import android.content.res.AssetManager;
+
+import com.lwx.mvprx.Constant;
+import com.lwx.mvprx.MyApplication;
 import com.lwx.mvprx.base.BasePresenter;
 import com.lwx.mvprx.data.DataManager;
 import com.lwx.mvprx.data.local.Girls;
 import com.lwx.mvprx.data.local.GirlsDao;
+import com.lwx.mvprx.data.local.GirlsUrls;
 import com.lwx.mvprx.data.remote.RxSchedulers;
+import com.lwx.mvprx.test.test;
+import com.lwx.mvprx.util.FileUtils;
+import com.lwx.mvprx.util.SPUtils;
+import com.lwx.mvprx.util.ToastUtils;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * <pre>

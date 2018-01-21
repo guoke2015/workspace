@@ -1,5 +1,7 @@
 package com.lwx.mvprx.feature.JokeInfo;
 
+import android.content.res.AssetManager;
+
 import com.lwx.mvprx.Constant;
 import com.lwx.mvprx.MyApplication;
 import com.lwx.mvprx.base.BaseObserver;
@@ -11,9 +13,11 @@ import com.lwx.mvprx.data.local.Girls;
 import com.lwx.mvprx.data.local.GirlsUrls;
 import com.lwx.mvprx.data.remote.RxSchedulers;
 import com.lwx.mvprx.test.test;
+import com.lwx.mvprx.util.FileUtils;
 import com.lwx.mvprx.util.SPUtils;
 import com.lwx.mvprx.util.ToastUtils;
 
+import java.io.IOException;
 import java.util.List;
 
 import io.reactivex.Observable;
@@ -104,7 +108,7 @@ public class JokePresenter<V extends JokeView> extends BasePresenter<V> {
         if (utils.getBoolean(Constant.FIRST, true)) {
 
             ///将外部数据库导入（导入成功，但查询时未查询到数据,原因暂时未知）
-            /*//数据库路径
+            //数据库路径
             StringBuilder sb = new StringBuilder();
             sb.append("/data/data/");
             sb.append(MyApplication.getInstance().getApplicationContext().getPackageName());
@@ -112,7 +116,7 @@ public class JokePresenter<V extends JokeView> extends BasePresenter<V> {
             AssetManager assetManager = MyApplication.getInstance().getApplicationContext().getAssets();
             try {
                 RxSchedulers.observable(FileUtils.writeFileFromIS(sb.toString(),
-                        assetManager.open("girls-db"), true))
+                        assetManager.open("girls-db"), false))
                         .subscribe(new Consumer<Boolean>() {
                             @Override
                             public void accept(Boolean aBoolean) throws Exception {
@@ -127,9 +131,9 @@ public class JokePresenter<V extends JokeView> extends BasePresenter<V> {
                         });
             } catch (IOException e) {
                 e.printStackTrace();
-            }*/
+            }
 
-            Observable.create(new ObservableOnSubscribe<List<Girls>>() {
+            /*Observable.create(new ObservableOnSubscribe<List<Girls>>() {
 
                 @Override
                 public void subscribe(ObservableEmitter<List<Girls>> e) throws Exception {
@@ -185,7 +189,7 @@ public class JokePresenter<V extends JokeView> extends BasePresenter<V> {
                                 ToastUtils.success(MyApplication.getInstance().getApplicationContext(), "插入数据失败");
                             }
                         }
-                    });
+                    });*/
         }
     }
 }
